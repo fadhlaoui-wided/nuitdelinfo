@@ -1,0 +1,79 @@
+<div class="flex flex-col flex-auto min-w-0">
+
+
+    <div class="flex-auto p-6 sm:p-10">
+        <div
+            class="sm:col-span-2 lg:col-span-3  flex flex-col flex-auto bg-card dark:bg-gray-800 shadow rounded-2xl overflow-hidden p-4">
+
+            <dx-data-grid id="gridContainerPrint" [columnHidingEnabled]="true" [showBorders]="true"
+                [showColumnHeaders]="true" [dataSource]="personnes">
+
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true" placeholder="Search...">
+                </dxo-search-panel>
+
+                <dxo-paging [pageSize]="8"></dxo-paging>
+                <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[8,15,30,50]" [showInfo]="true">
+                </dxo-pager>
+
+                <dxi-column dataField="nom"       caption="Nom"        [visible]="true" ></dxi-column>
+                <dxi-column dataField="prenom"    caption="Prenom"     [visible]="true" ></dxi-column>
+                <!-- <dxi-column dataField="type"      caption="Type"       [visible]="true" ></dxi-column> -->
+                <dxi-column dataField="annee"     caption="Année"      [visible]="true" ></dxi-column>
+    
+               
+                <dxi-column
+                dataField="type"
+                caption="Type" [visible]="true" 
+                >         
+                    <dxo-lookup
+                        [dataSource]="typesp"
+                        displayExpr="description"
+                        valueExpr="description">
+                    </dxo-lookup>
+                </dxi-column>
+                <dxi-column dataField="status"    caption="Status"  dataType="boolean"    ></dxi-column>
+            </dx-data-grid>
+
+        </div>
+    </div>
+
+</div>
+<div class="flex flex-col flex-auto min-w-0">
+
+
+    <div class="flex-auto p-6 sm:p-10">
+        <div
+            class="sm:col-span-2 lg:col-span-3  flex flex-col flex-auto bg-card dark:bg-gray-800 shadow rounded-2xl overflow-hidden p-4">
+
+      
+            <dx-data-grid id="gridContainerPrint" [columnHidingEnabled]="true" [showBorders]="true"
+                [showColumnHeaders]="true" [dataSource]="bateaux">
+
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true" placeholder="Search...">
+                </dxo-search-panel>
+
+                <dxo-paging [pageSize]="8"></dxo-paging>
+                <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[8,15,30,50]" [showInfo]="true">
+                </dxo-pager>
+                <dxi-column dataField="nom"       caption="Nom"        [visible]="true" ></dxi-column>
+           
+                <dxi-column  
+                dataField="type"
+                caption="Type" [visible]="true" 
+                >         
+                    <dxo-lookup
+                        [dataSource]="typesb"
+                        displayExpr="description"
+                        valueExpr="description">
+                    </dxo-lookup>
+                </dxi-column>
+                <dxi-column dataField="status"    caption="Status"  dataType="boolean"    ></dxi-column>
+            
+            </dx-data-grid>
+
+
+
+        </div>
+    </div>
+
+</div>

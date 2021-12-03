@@ -1,0 +1,68 @@
+<div class="flex flex-col flex-auto min-w-0">
+
+   
+    <div class="flex-auto p-6 sm:p-10">
+         <!--Title -->
+         <div class="flex items-center justify-between w-full">
+            <div>
+                <h2 class="text-2xl font-semibold tracking-tight leading-8">
+                    Liste des Bateaus
+                  
+                </h2>
+               
+                <div class="font-medium tracking-tight text-secondary"> </div>
+            </div>
+            <div class="flex items-center ml-6">
+            
+            
+            </div> 
+        </div>
+
+        <div class="sm:col-span-2 lg:col-span-3  flex flex-col flex-auto bg-card dark:bg-gray-800 shadow rounded-2xl overflow-hidden p-4 mt-4">
+            <dx-data-grid   
+            [columnHidingEnabled]="true"
+            [showBorders]="true"
+            [dataSource]="bateaus">
+        
+            <dxo-editing mode="popup"  [allowAdding]="true"  [allowUpdating]="true" [allowDeleting]="true" [useIcons]="true" refreshMode="refreshMode">
+                <dxo-texts confirmDeleteMessage="you are sure to delete"></dxo-texts>
+                <dxo-form >
+                       
+                        <dxi-item cssClass="padding-form"  itemType="group" [colCount]="2" [colSpan]="2" caption="Informations personnelles">
+                            <dxi-item itemType="group"  [colSpan]="1" >
+                                <dxi-item dataField="nom"></dxi-item>
+                                <dxi-item dataField="type"></dxi-item>
+                                <dxi-item dataField="status"></dxi-item>
+                           
+                            </dxi-item>
+                        </dxi-item>
+                    
+                </dxo-form>
+               
+            </dxo-editing>
+        
+            <dxo-export [enabled]="true" [allowExportSelectedData]="true" widget="dxButton" cssClass="menu-button"></dxo-export>
+            <dxo-paging [pageSize]="15"></dxo-paging>
+            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[15, 25, 50, 100]"  [showInfo]="true" ></dxo-pager>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+           
+            <dxi-column dataField="nom"       caption="Nom"        [visible]="true" ></dxi-column>
+           
+            <dxi-column  
+            dataField="type"
+            caption="Type" [visible]="true" 
+            >         
+                <dxo-lookup
+                    [dataSource]="types"
+                    displayExpr="description"
+                    valueExpr="description">
+                </dxo-lookup>
+            </dxi-column>
+            <dxi-column dataField="status"    caption="Status"  dataType="boolean"    [visible]="show" ></dxi-column>
+        
+
+            </dx-data-grid>
+        </div>
+    </div>
+
+</div>
